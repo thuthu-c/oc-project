@@ -74,3 +74,9 @@ Implementar o Controle através de Máquina de Estados e testar individualmente
 3. INTEGRAÇÃO
 
 Integrar a Parte Operativa com a Parte de Controle
+
+
+
+TAREFAS QUE FALTAM: 
+-> Criar o MUX, o Extensor de Bits e o Deslocador;
+-> Fazer a parte de controle (faz sem pipeline e depois acrescenta a pipeline); 

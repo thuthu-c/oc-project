@@ -6,11 +6,11 @@
 SC_MODULE(alu4bit){
 
     //inputs 
-    sc_in<sc_uint<4>> a, b; //operandos de 4 bits
+    sc_in<sc_uint<32>> a, b; //operandos de 4 bits
     sc_in<sc_uint<3>> op; //codigo de operação 
 
     //outputs
-    sc_out<sc_uint<4>> result; //resultado de 4 bits
+    sc_out<sc_uint<32>> result; //resultado de 4 bits
     sc_out<bool> carry_out;  
 
     //behavior
@@ -56,6 +56,13 @@ SC_MODULE(alu4bit){
             carry_out.write(false);
         }
         break; 
+
+        
+        // comp a == b
+        case 5: {
+            result.write(a.read() == b.read() ? 1 : 0);
+            carry_out.write(false); 
+        }
         
         default:
             break;

@@ -3,7 +3,7 @@
 
 #include "systemc.h"
 
-#define INSTR_MEM_SIZE 1024 //tamanho da memória de instruções em palavras de 32 bits
+#define INSTR_MEM_SIZE 32 //tamanho da memória de instruções em palavras de 32 bits
 
 SC_MODULE(InstructionMemory){
     //entradas
@@ -14,7 +14,7 @@ SC_MODULE(InstructionMemory){
     sc_out<sc_uint<32>> instruction; //instrução lida da memória de instruções
 
     //memória de instruções
-    sc_uint<32> instr_memory[INSTR_MEM_SIZE];
+    sc_uint<32> instr_memory[32];
 
     //processo
     void instr_mem_process(){

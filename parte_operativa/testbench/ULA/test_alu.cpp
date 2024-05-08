@@ -36,7 +36,7 @@ int sc_main(int argc, char* argv[]){
     cout<< "Resultado: " << sig_result.read() << endl;
     cout << "Carry Out: " << (sig_carry_out.read() ? "true" : "false") << endl;
 
-sig_op.write(2); // AND
+    sig_op.write(2); // AND
 
     sc_start(1, SC_NS); // Processar
     cout << "Resultado AND: " << sig_result.read() << endl;

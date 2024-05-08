@@ -1,0 +1,368 @@
+$date
+     May 06, 2024       20:33:27
+$end
+
+$version
+ SystemC 2.3.3-Accellera --- Apr 15 2024 10:27:28
+$end
+
+$timescale
+     1 ns
+$end
+
+$scope module SystemC $end
+$var wire    6  aaaaa  opcode [5:0]  $end
+$var wire    3  aaaab  aluOp [2:0]  $end
+$var wire    1  aaaac  aluSrc       $end
+$var wire    1  aaaad  regDst       $end
+$var wire    1  aaaae  regWrite       $end
+$var wire    1  aaaaf  memRead       $end
+$var wire    1  aaaag  memWrite       $end
+$var wire    1  aaaah  memToReg       $end
+$var wire    1  aaaai  branch       $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+b0 aaaaa
+b10 aaaab
+0aaaac
+1aaaad
+1aaaae
+0aaaaf
+0aaaag
+0aaaah
+0aaaai
+$end
+
+#1
+b1 aaaaa
+
+#2
+b10 aaaaa
+
+#3
+b11 aaaaa
+
+#4
+b100 aaaaa
+b1 aaaab
+0aaaad
+0aaaae
+1aaaai
+
+#5
+b101 aaaaa
+
+#6
+b110 aaaaa
+
+#7
+b111 aaaaa
+
+#8
+b1000 aaaaa
+
+#9
+b1001 aaaaa
+
+#10
+b1010 aaaaa
+
+#11
+b1011 aaaaa
+
+#12
+b1100 aaaaa
+
+#13
+b1101 aaaaa
+
+#14
+b1110 aaaaa
+
+#15
+b1111 aaaaa
+
+#16
+b10000 aaaaa
+
+#17
+b10001 aaaaa
+
+#18
+b10010 aaaaa
+
+#19
+b10011 aaaaa
+
+#20
+b10100 aaaaa
+
+#21
+b10101 aaaaa
+
+#22
+b10110 aaaaa
+
+#23
+b10111 aaaaa
+
+#24
+b11000 aaaaa
+
+#25
+b11001 aaaaa
+
+#26
+b11010 aaaaa
+
+#27
+b11011 aaaaa
+
+#28
+b11100 aaaaa
+
+#29
+b11101 aaaaa
+
+#30
+b11110 aaaaa
+
+#31
+b11111 aaaaa
+
+#32
+b100000 aaaaa
+
+#33
+b100001 aaaaa
+
+#34
+b100010 aaaaa
+
+#35
+b100011 aaaaa
+b0 aaaab
+1aaaac
+1aaaae
+1aaaaf
+1aaaah
+0aaaai
+
+#36
+b100100 aaaaa
+
+#37
+b100101 aaaaa
+
+#38
+b100110 aaaaa
+
+#39
+b100111 aaaaa
+
+#40
+b101000 aaaaa
+
+#41
+b101001 aaaaa
+
+#42
+b101010 aaaaa
+
+#43
+b101011 aaaaa
+0aaaae
+0aaaaf
+1aaaag
+0aaaah
+
+#44
+b101100 aaaaa
+
+#45
+b101101 aaaaa
+
+#46
+b101110 aaaaa
+
+#47
+b101111 aaaaa
+
+#48
+b110000 aaaaa
+
+#49
+b110001 aaaaa
+
+#50
+b110010 aaaaa
+
+#51
+b110011 aaaaa
+
+#52
+b110100 aaaaa
+
+#53
+b110101 aaaaa
+
+#54
+b110110 aaaaa
+
+#55
+b110111 aaaaa
+
+#56
+b111000 aaaaa
+
+#57
+b111001 aaaaa
+
+#58
+b111010 aaaaa
+
+#59
+b111011 aaaaa
+
+#60
+b111100 aaaaa
+
+#61
+b111101 aaaaa
+
+#62
+b111110 aaaaa
+
+#63
+b111111 aaaaa
+
+#64
+b0 aaaaa
+b10 aaaab
+0aaaac
+1aaaad
+1aaaae
+0aaaag
+
+#65
+b1 aaaaa
+
+#66
+b10 aaaaa
+
+#67
+b11 aaaaa
+
+#68
+b100 aaaaa
+b1 aaaab
+0aaaad
+0aaaae
+1aaaai
+
+#69
+b101 aaaaa
+
+#70
+b110 aaaaa
+
+#71
+b111 aaaaa
+
+#72
+b1000 aaaaa
+
+#73
+b1001 aaaaa
+
+#74
+b1010 aaaaa
+
+#75
+b1011 aaaaa
+
+#76
+b1100 aaaaa
+
+#77
+b1101 aaaaa
+
+#78
+b1110 aaaaa
+
+#79
+b1111 aaaaa
+
+#80
+b10000 aaaaa
+
+#81
+b10001 aaaaa
+
+#82
+b10010 aaaaa
+
+#83
+b10011 aaaaa
+
+#84
+b10100 aaaaa
+
+#85
+b10101 aaaaa
+
+#86
+b10110 aaaaa
+
+#87
+b10111 aaaaa
+
+#88
+b11000 aaaaa
+
+#89
+b11001 aaaaa
+
+#90
+b11010 aaaaa
+
+#91
+b11011 aaaaa
+
+#92
+b11100 aaaaa
+
+#93
+b11101 aaaaa
+
+#94
+b11110 aaaaa
+
+#95
+b11111 aaaaa
+
+#96
+b100000 aaaaa
+
+#97
+b100001 aaaaa
+
+#98
+b100010 aaaaa
+
+#99
+b100011 aaaaa
+b0 aaaab
+1aaaac
+1aaaae
+1aaaaf
+1aaaah
+0aaaai
+
+#100

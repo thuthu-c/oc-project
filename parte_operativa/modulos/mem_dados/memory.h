@@ -11,6 +11,7 @@ SC_MODULE(Memory) {
     sc_in<bool> mem_write;  // Sinal de controle para escrita na memória
     sc_in<sc_uint<32>> address; //endereço da memória
     sc_in<sc_uint<32>> write_data; // dados para escrever na memória
+    sc_in<bool> mem_read;
 
 
     // saídas
@@ -27,6 +28,26 @@ SC_MODULE(Memory) {
             read_data.write(memory[address.read()]);
         }
     }
+
+    // Função para ler da memória
+    sc_uint<32> read_memory(int index) {
+        if(index >= 0 && index < MEM_SIZE) {
+            return memory[index];
+        } else {
+            std::cout<< "ERRO!!!!" <<std::endl;
+            return 0;
+        }
+    }
+
+    // Função para escrever na memória
+    void write_memory(int index, sc_uint<32> value) {
+        if(index >= 0 && index < MEM_SIZE) {
+            memory[index] = value;
+        } else {
+           std::cout<< "ERRO!!!!" <<std::endl;
+        }
+    }
+
 
     SC_CTOR(Memory){
         SC_METHOD(mem_process);
