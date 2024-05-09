@@ -8,12 +8,10 @@ SC_MODULE(RegisterBank){
     //inputs
     sc_in<bool> clk; //clock
     sc_in<bool> write_enable; //enable de escrita
-    sc_in<sc_uint<32>> write_address; // endereço de escrita
+    sc_in<sc_uint<5>> write_address; // endereço de escrita
     sc_in<sc_uint<32>> write_data; //dados de escrita; 
     sc_in<sc_uint<32>> read_address_1; // endereço de leitura 1
     sc_in<sc_uint<32>> read_address_2; // endereço de leitura 2
-    sc_in<sc_uint<32>> RegWrite; 
-
 
     //outputs
     sc_out<sc_uint<32>> read_data_1; // dados de leitura 1
@@ -35,6 +33,8 @@ SC_MODULE(RegisterBank){
         read_data_1.write(registers[read_address_1.read()]);
         read_data_2.write(registers[read_address_2.read()]);
     }
+
+
 
     SC_CTOR(RegisterBank){
         SC_METHOD(write);

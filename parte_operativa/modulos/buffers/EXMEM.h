@@ -31,9 +31,9 @@ SC_MODULE(EXMEM){
 
     //comportamento
     void process(){
-        out_adder.write(in_address);
-        out_alu_result.write(in_write_data);
-        out_idex.write(in_mux);
+        out_adder.write(in_mux);
+        out_alu_result.write(in_address);
+        out_idex.write(in_write_data);
         out_mux.write(in_memwb);
         zero.write(zero);
         aluOp.write(aluOp);

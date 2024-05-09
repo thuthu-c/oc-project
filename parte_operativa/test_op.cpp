@@ -6,12 +6,14 @@ int sc_main(int argc, char* argv[]) {
     OpPart op("OpPart");
 
     // Sinais para conectar ao módulo
-    sc_signal<bool> clk, reset, enable, jump;
-    sc_signal<sc_uint<32>> out_exmim_in_muxone, out_ifid_in_reg, out_memwb_in_write_register, RegWrite, out_idex_in_add, out_idex_in_alu, out_idex_in_one_mux_two, out_idex_in_two_mux_two, out_exmem_in_address_data_memory, out_exmem_in_writedata_data_memory, out_memwb_in_one_mux_four, out_memwb_in_two_mux_four;
+    sc_signal<bool> clk, reset, enable, jump, PCSrc, ALUSrc,MemWrite,  MemRead, MemtoReg, RegWrite;
+    sc_signal<sc_uint<32>> out_exmim_in_muxone, out_ifid_in_reg, out_memwb_in_write_register, out_idex_in_add,  out_mux_three_in_exmem, 
+                           out_idex_in_alu, out_idex_in_one_mux_two, out_idex_in_two_mux_two,  
+                           out_exmem_in_address_data_memory, out_exmem_in_writedata_data_memory,  
+                           out_memwb_in_one_mux_four, out_memwb_in_two_mux_four;
     sc_signal<sc_uint<16>> instruction;
-    sc_signal<bool> PCSrc, ALUSrc, MemWrite, MemRead, MemtoReg;
-    sc_signal<sc_uint<5>> out_idex_in_one_mux_three, out_idex_in_two_mux_three;
-    sc_signal<sc_uint<3>>out_alucontrol_in_alu;
+    sc_signal<sc_uint<3>> out_alucontrol_in_alu; 
+    sc_signal<sc_uint<5>>  out_idex_in_one_mux_three, out_idex_in_two_mux_three;
 
     // Conectando os sinais
     op.clk(clk);
@@ -45,11 +47,31 @@ int sc_main(int argc, char* argv[]) {
     wf->set_time_unit(1, SC_NS);
 
     // Adicionando sinais ao VCD Trace
-    sc_trace(wf, out_instruction_memory_in_ifid, "out_instruction_memory_in_ifid");
-    sc_trace(wf, out_add_in_ifid, "out_add_in_ifid");
-    sc_trace(wf, out_registers_rdataone_in_idex, "out_registers_rdataone_in_idex");
-    sc_trace(wf,zero, "zero");
-    // Adicione os sinais que você deseja rastrear
+    sc_trace(wf, clk, "clk");
+    sc_trace(wf, reset, "reset");
+    sc_trace(wf, enable, "enable");
+    sc_trace(wf, jump, "jump");
+    sc_trace(wf, out_exmim_in_muxone, "out_exmim_in_muxone");
+    sc_trace(wf, PCSrc, "PCSrc");
+    sc_trace(wf, out_ifid_in_reg, "out_ifid_in_reg");
+    sc_trace(wf, out_memwb_in_write_register, "out_memwb_in_write_register");
+    sc_trace(wf, RegWrite, "RegWrite");
+    sc_trace(wf, out_idex_in_add, "out_idex_in_add");
+    sc_trace(wf, out_idex_in_alu, "out_idex_in_alu");
+    sc_trace(wf, out_alucontrol_in_alu, "out_alucontrol_in_alu");
+    sc_trace(wf, out_idex_in_one_mux_two, "out_idex_in_one_mux_two");
+    sc_trace(wf, out_idex_in_two_mux_two, "out_idex_in_two_mux_two");
+    sc_trace(wf, ALUSrc, "ALUSrc");
+    sc_trace(wf, out_idex_in_one_mux_three, "out_idex_in_one_mux_three");
+    sc_trace(wf, out_idex_in_two_mux_three, "out_idex_in_two_mux_three");
+    sc_trace(wf, out_exmem_in_address_data_memory, "out_exmem_in_address_data_memory");
+    sc_trace(wf, out_exmem_in_writedata_data_memory, "out_exmem_in_writedata_data_memory");
+    sc_trace(wf, MemWrite, "MemWrite");
+    sc_trace(wf, MemRead, "MemRead");
+    sc_trace(wf, out_memwb_in_one_mux_four, "out_memwb_in_one_mux_four");
+    sc_trace(wf, out_memwb_in_two_mux_four, "out_memwb_in_two_mux_four");
+    sc_trace(wf, MemtoReg, "MemtoReg");
+    sc_trace(wf, instruction, "instruction");
 
     // Simulando por 100 ns
     for (int i = 0; i < 100; i++) {

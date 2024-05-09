@@ -7,7 +7,7 @@ SC_MODULE(IDEX){
 
     //entradas
     sc_in<sc_uint<32>> out_ifid, out_reg_data_one, out_reg_data_two, out_ext; 
-    sc_in<sc_uint<5>> instruction_one, instruction_two;
+    sc_in<sc_uint<32>> instruction_one, instruction_two;
     sc_in<sc_uint<3>> aluOp;
     sc_in<bool> aluSrc;
     sc_in<bool> regDst;
@@ -31,14 +31,15 @@ SC_MODULE(IDEX){
 
     //comportamento
     void process(){
-        out_ifid.write(in_add);
-        out_reg_data_one.write(in_ula);
-        out_reg_data_two.write(in_mux);
-        out_ext.write(in_instruction);
-        instruction_one.write(in_mux_one);
-        instruction_two.write(in_mux_two);
+        in_add.write(out_ifid);
+        in_ula.write(out_reg_data_one);
+        in_mux.write(out_reg_data_two);
+        in_instruction.write(out_ext);
+        in_mux_one.write(instruction_one.read().range(20,16));
+        in_mux_two.write(instruction_two.read().range(15,11));
         aluOp.write(aluOp);
         aluSrc.write(aluSrc);
+        regDst.write(regDst);
         regWrite.write(regWrite);
         memRead.write(memRead);
         memWrite.write(memWrite);
