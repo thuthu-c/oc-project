@@ -60,11 +60,34 @@ SC_MODULE(alu4bit){
         
         // comp a == b
         case 5: {
-            result.write(a.read() == b.read() ? 1 : 0);
-            carry_out.write(false); 
+            if(a.read() == b.read()){
+                result.write(1);
+                carry_out.write(true);
+            }
+            else if(a.read() <  b.read()){
+                result.write(0);
+                carry_out.write(false);
+            }
+            else{
+                result.write(2);
+                carry_out.write(false);
+            }
+             
+        }
+
+        // neg ~a
+        case 6: {
+            result.write(~(a.read()));
+            carry_out.write(false);
+        }
+
+        case 7 :{
+            result.write(a.read() = b.read());
+            carry_out.write(false);
         }
         
         default:
+            result.write(0);
             break;
         }
     }

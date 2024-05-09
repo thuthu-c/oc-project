@@ -39,7 +39,9 @@ SC_MODULE(OpPart){
     sc_in<sc_uint<32>> out_exmim_in_muxone; 
     sc_in<bool> PCSrc;
     //entradas banco de registradores
-    sc_in<sc_uint<32>> out_ifid_in_reg, out_memwb_in_write_register, RegWrite;
+    sc_in<sc_uint<32>> out_ifid_in_reg;
+    sc_in<sc_uint<5>> out_memwb_in_write_register;
+    sc_in<bool>  RegWrite;
     //entradas somador 2
     sc_in<sc_uint<32>> out_idex_in_add;
     //entradas ula
@@ -145,10 +147,10 @@ SC_MODULE(OpPart){
                        registers.read_address_2(out_ifid_in_reg);
                        registers.write_address(out_memwb_in_write_register); 
                        registers.write_data(out_mux_four_in_wd_registers);
-                       registers.RegWrite(RegWrite);
                        registers.read_data_1(out_registers_rdataone_in_idex);
                        registers.read_data_2(out_registers_rdatatwo_in_idex);
                        registers.clk(clk);
+                       registers.write_enable(RegWrite);
 
                        //perguntar pra professora sobre os clocks e os enables
                       
@@ -158,8 +160,7 @@ SC_MODULE(OpPart){
                        ula.b(out_mux_two_in_alu); 
                        ula.op(out_alucontrol_in_alu);
                        ula.result(out_alu_in_exmem); 
-                       ula.carry_out(zero);
-
+                       ula.carry_out(zero); 
                       //MUX 2
                        mux_2.a(out_idex_in_one_mux_two);
                        mux_2.b(out_idex_in_two_mux_two);
@@ -167,7 +168,7 @@ SC_MODULE(OpPart){
                        mux_2.out(out_mux_two_in_alu);
 
                       //EXTENSOR DE BITS
-                       extensor.in(instruction);
+                       extensor.in(out_ifid_in_reg.read().range(15,0));
                        extensor.out(out_ext_in_idex);
 
                       //DESLOCADOR
@@ -189,6 +190,7 @@ SC_MODULE(OpPart){
                       data_mem.mem_read(MemRead);
                       data_mem.mem_write(MemWrite);
                       data_mem.clk(clk);
+                      data_mem.read_data(out_datamemory_in_memwb);
 
                       //MUX 3 
                       mux_3.a(out_idex_in_one_mux_three); 
