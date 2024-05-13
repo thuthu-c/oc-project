@@ -82,7 +82,7 @@ SC_MODULE(alu4bit){
         }
 
         case 7 :{
-            result.write(a.read() = b.read());
+            result.write(a.read() + 0);
             carry_out.write(false);
         }
         
