@@ -8,26 +8,26 @@ SC_MODULE(IDEX){
     //entradas
     sc_in<sc_uint<32>> out_ifid, out_reg_data_one, out_reg_data_two, out_ext; 
     sc_in<sc_uint<32>> instruction_one, instruction_two;
-    sc_in<sc_uint<3>> aluOp;
-    sc_in<bool> aluSrc;
-    sc_in<bool> regDst;
-    sc_in<bool> regWrite;
-    sc_in<bool> memRead;
-    sc_in<bool> memWrite;
-    sc_in<bool> memToReg;
-    sc_in<bool> branch;
+    sc_in<sc_uint<3>> alu_op_in;
+    sc_in<bool> alu_src_in;
+    sc_in<bool> reg_dst_in;
+    sc_in<bool> reg_write_in;
+    sc_in<bool> mem_read_in;
+    sc_in<bool> mem_write_in;
+    sc_in<bool> mem_to_reg_in;
+    sc_in<bool> branch_in;
 
     //saída
     sc_out<sc_uint<32>> in_add, in_ula, in_mux, in_instruction; 
     sc_out<sc_uint<5>> in_mux_one, in_mux_two; 
-    sc_out<sc_uint<3>> aluOp;
-    sc_out<bool> aluSrc;
-    sc_out<bool> regDst;
-    sc_out<bool> regWrite;
-    sc_out<bool> memRead;
-    sc_out<bool> memWrite;
-    sc_out<bool> memToReg;
-    sc_out<bool> branch;
+    sc_out<sc_uint<3>> alu_op_out;
+    sc_out<bool> alu_src_out;
+    sc_out<bool> reg_dst_out;
+    sc_out<bool> reg_write_out;
+    sc_out<bool> mem_read_out;
+    sc_out<bool> mem_write_out;
+    sc_out<bool> mem_to_reg_out;
+    sc_out<bool> branch_out;
 
     //comportamento
     void process(){
@@ -37,21 +37,21 @@ SC_MODULE(IDEX){
         in_instruction.write(out_ext);
         in_mux_one.write(instruction_one.read().range(20,16));
         in_mux_two.write(instruction_two.read().range(15,11));
-        aluOp.write(aluOp);
-        aluSrc.write(aluSrc);
-        regDst.write(regDst);
-        regWrite.write(regWrite);
-        memRead.write(memRead);
-        memWrite.write(memWrite);
-        memToReg.write(memToReg);
-        branch.write(branch);
+        alu_op_out.write(alu_op_in);
+        alu_src_out.write(alu_src_in);
+        reg_dst_out.write(reg_dst_in);
+        reg_write_out.write(reg_write_in);
+        mem_read_out.write(mem_read_in);
+        mem_write_out.write(mem_write_in);
+        mem_to_reg_out.write(mem_to_reg_in);
+        branch_out.write(branch_in);
     }
 
 
 
-    SC_CTOR(IFID){
+    SC_CTOR(IDEX){
         SC_METHOD(process);
-        sensitive << out_ifid << out_reg_data_one << out_reg_data_two << out_ext << instruction_one << instruction_two << aluOp << aluSrc <<  regDst <<  regWrite <<  memRead << memWrite << memToReg << branch;  
+        sensitive << out_ifid << out_reg_data_one << out_reg_data_two << out_ext << instruction_one << instruction_two << alu_op_in << alu_src_in <<  reg_dst_in <<  reg_write_in <<  mem_read_in << mem_write_in << mem_to_reg_in << branch_in;
     }
 };
 

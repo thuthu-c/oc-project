@@ -168,8 +168,8 @@ SC_MODULE(OpPart){
                        mux_2.out(out_mux_two_in_alu);
 
                       //EXTENSOR DE BITS
-                      sc_dt::sc_uint<16> temp = out_ifid_in_reg.read().range(15,0);
-                       extensor.in = temp;
+                      // sc_dt::sc_uint<16> temp = ;
+                       extensor.in(out_ifid_in_reg);
                        extensor.out(out_ext_in_idex);
 
                       //DESLOCADOR
